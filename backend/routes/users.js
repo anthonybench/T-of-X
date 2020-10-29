@@ -8,7 +8,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const userid = Math.floor((Math.random() * 100) + 1); // go through students and get the next id no.
+    const userid = Math.floor((Math.random() * 100) + 1); // go through users and get the next id no.
     const username = req.body.username;
     const useristeacher = req.body.isTeacher;
 
