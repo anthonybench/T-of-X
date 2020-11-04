@@ -1,8 +1,17 @@
 const router = require('express').Router();
 let Session = require('../models/session.model');
+let User = require('../models/user.model');
 
 router.route('/').get((req, res) => {
+    // console.log(req.params);
     Session.find()
+        .then(sessions => res.json(sessions))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:uid').get((req, res) => {
+    Session.find( { "uid" : req.params.uid } )
+        .then(console.log(req.params.uid))
         .then(sessions => res.json(sessions))
         .catch(err => res.status(400).json('Error: ' + err));
 });
