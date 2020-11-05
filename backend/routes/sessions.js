@@ -11,7 +11,6 @@ router.route('/').get((req, res) => {
 
 router.route('/:uid').get((req, res) => {
     Session.find( { "uid" : req.params.uid } )
-        .then(console.log(req.params.uid))
         .then(sessions => res.json(sessions))
         .catch(err => res.status(400).json('Error: ' + err));
 });
