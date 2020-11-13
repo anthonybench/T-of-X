@@ -7,10 +7,16 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/:uid').get((req, res) => {
+    User.find( { "id" : req.params.uid } )
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.route('/add').post((req, res) => {
     const userid = Math.floor((Math.random() * 100) + 1); // go through users and get the next id no.
     const username = req.body.username;
-    const useristeacher = req.body.isTeacher;
+    const useristeacher = req.body.isTeacher.toLowerCase() === "yes" ? true : false;
 
     const newUser = new User({
         username : username,
