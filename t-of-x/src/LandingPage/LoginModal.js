@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {Modal} from 'react-bootstrap'
-import {Button} from 'react-bootstrap'
+import {Modal, Button, Form, Row, Col, Container} from 'react-bootstrap'
+import {IoMdPerson, IoMdPeople} from "react-icons/io";
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -12,20 +12,48 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+              Log in
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
+        <Form>
+            <fieldset>
+                <Form.Label as="legend">
+                    Log in as
+                </Form.Label>
+            <Form.Row>
+                <Col md={{ span: 3, offset: 2 }}>
+                <IoMdPerson size="140"
+                    style={{ fill: '#1e7e96' }} 
+                />
+                    <Form.Check
+                    inline
+                    type="checkbox"
+                    label="Teacher"
+                    id="checkTeacher"
+                    />
+                </Col>
+                <Col md={{ span: 3, offset: 2 }}>
+                <IoMdPeople size="140"
+                    style={{ fill: '#1e7e96' }} 
+                />
+                    <Form.Check
+                    inline
+                    type="checkbox"
+                    label="Student"
+                    id="checkStudent"
+                    />
+                </Col>
+            </Form.Row>
+            </fieldset>
+            <Form.Row>
+                    <Button type="submit" variant="danger" block>Sign in with Google</Button>
+            </Form.Row>
+        </Form>
         </Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     );
   }
@@ -36,7 +64,13 @@ function LoginModal() {
 
     return (
       <>
-        <Button variant="danger" onClick={() => setModalShow(true)}>
+        <Button variant="danger" onClick={() => setModalShow(true)}
+            style={{
+                position: "absolute",
+                top: 20,
+                right: 30,
+            }}
+        >
             Log in
         </Button>
   
