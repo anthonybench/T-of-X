@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Modal, Button, Form, Row, Col, Container} from 'react-bootstrap'
-import {IoMdPerson, IoMdPeople} from "react-icons/io";
+import {IoMdContact, IoMdPerson, IoMdPeople} from "react-icons/io";
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -23,8 +23,11 @@ function MyVerticallyCenteredModal(props) {
                 </Form.Label>
             <Form.Row>
                 <Col md={{ span: 3, offset: 2 }}>
-                <IoMdPerson size="140"
-                    style={{ fill: '#1e7e96' }} 
+                <IoMdPerson size="130"
+                    style={{ 
+                        fill: '#1e7e96', 
+                        marginBottom: 10,
+                    }} 
                 />
                     <Form.Check
                     inline
@@ -72,6 +75,12 @@ function LoginModal() {
             }}
         >
             Log in
+        <IoMdContact
+            size="30"
+            style={{
+                marginLeft: "10",
+            }} 
+        />
         </Button>
   
         <MyVerticallyCenteredModal
