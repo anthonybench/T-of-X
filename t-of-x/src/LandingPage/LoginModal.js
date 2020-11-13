@@ -30,6 +30,9 @@ function MyVerticallyCenteredModal(props) {
                     }} 
                 />
                     <Form.Check
+                    style={{ 
+                        marginLeft: 30,
+                    }} 
                     inline
                     type="checkbox"
                     label="Teacher"
@@ -41,6 +44,9 @@ function MyVerticallyCenteredModal(props) {
                     style={{ fill: '#1e7e96' }} 
                 />
                     <Form.Check
+                    style={{ 
+                        marginLeft: 30,
+                    }} 
                     inline
                     type="checkbox"
                     label="Student"
@@ -50,7 +56,16 @@ function MyVerticallyCenteredModal(props) {
             </Form.Row>
             </fieldset>
             <Form.Row>
-                    <Button type="submit" variant="danger" block>Sign in with Google</Button>
+                    <Button type="submit" variant="danger" block
+                        style={{ 
+                            marginTop: 50,
+                        }} 
+                    >
+                        Sign in with Google
+                    </Button>
+                    <Button variant="outline-info" block>
+                        Sign up
+                    </Button>
             </Form.Row>
         </Form>
         </Modal.Body>
