@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [{ "src": "server.js", "use": "@vercel/node" }],
+    "routes": [
+        { "src": "/", "dest": "/server.js" },
+        { "src": "/sessions", "dest": "server.js"},
+        { "src": "/sessions/(?<uid>[^/]+)", "dest": "server.js"},
+        { "src": "/users", "dest": "/server.js"},
+        { "src": "/users/(?<uid>[^/]+)", "dest": "/server.js"},
+        { "src": "/users/add", "methods": ["POST"], "dest": "/server.js"},
+        { "src": "/sessions/add", "methods": ["POST"], "dest": "/server.js"}
+      ]
+}
