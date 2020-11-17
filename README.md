@@ -26,14 +26,28 @@ This repository contains a tutoring scheduler developed in collaboration with [I
 ### Get Started 🚀
 <hr>
 
-~ooo~
+Our application example is hosted [here](https://t-of-x-294901.uc.r.appspot.com/), and is instanced for me (*Isaac Yep*), however this application as a product would be tailored for any tutor as a front facing scheduler/portal through which to interact with current or potential clients. Simply clone this repository, change placeholder values and items with your own, and deploy. Make sure to run `npm install` in both front end (`/t-of-x`) and back end (`/backend`) subdirectories. The front end is a *React* application, and the back end is a *Node/Express* application. For relevant api keys, you'll need to register a [Google Cloud Project](https://cloud.google.com), as well as a [MongoDB Atlas Project](https://mongodb.com) project.
 
 <br />
 
 ### Usage ⚙
 <hr>
 
-~ooo~
+There are 3 views in this application, the *landing page*, *teacher dashboard*, and *student dashboard*. In the landing page, you decided to create an account as a new student, or login with your credentials as the teacher or student:
+
+<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/4POxj2g.png" width="200" />
+
+After authenticaing with Google Authentication, the user is routed to their appropriate view.
+
+For the Teacher:
+
+<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/4POxj2g.png" width="200" />
+
+For the Student:
+
+<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/4POxj2g.png" width="200" />
+
+From here, meeting time propositions can be sent and recieved, and a calendar view organizes your availability to make business quick, without needing to open other web-apps. This app aims to be realistic, and doesn't attempt to enforce strict times, but instead delivers contact information and availability, and allows meeting times to be confirmed and managed easily so as to not get in the way of changing times on the fly when needed.
 
 <br />
 
@@ -47,6 +61,7 @@ This repository contains a tutoring scheduler developed in collaboration with [I
   - [Google API](https://developers.google.com/docs/api)
   - [Google Calendar API](https://developers.google.com/calendar)
   - [Math.js](https://mathjs.org/docs/)
+  - [React-Axios](https://www.npmjs.com/package/react-axios)
 
 <br />
 
@@ -60,14 +75,14 @@ We are not reviewing pull requests for merging at this time, but would greatly a
 ### Acknowledgements 💙
 <hr>
 
-~ooo~
+A huge thanks to our instructor **Caterina Paun**, and TA **Casper Rutz** for delivering this course and empowering us to develop ***T(X)***, we learned so much from this project, are proud of what we made here, and genuinely intend to keep maintaining and imporoving this application to use personally. This application was made as a course project for the **Full Stack Web Development** course at *Portland State University*.
 
 <br />
 
 ### License, Stats, Author 📜
 <hr>
 
-<img align="right" alt="example image tag" src="https://i.imgur.com/4POxj2g.png" width="200" />
+<img align="right" alt="heart" src="https://i.imgur.com/4POxj2g.png" width="200" />
 
 <!-- badge cluster -->
 
@@ -79,139 +94,11 @@ MongoDB ![npm](https://img.shields.io/npm/v/mongodb)
 
 Express ![npm](https://img.shields.io/npm/v/express)
 
+React-Axios ![npm](https://img.shields.io/npm/v/react-axios)
+
 <!-- / -->
 See [License](https://opensource.org/licenses/MIT) for the full license text.
 
 This repository was authored by *Michael Change* and *Isaac Yep*.
 
 [Back to Table of Contents](#table-of-contents-)
-
-
-
-
-
-<!-- =============================================== -->
-<!-- =============================================== -->
-<!-- =============================================== -->
-
-
-
-
-<br /><br /><br /><br /><br /><br /><br />
-# **CHEAT SHEET**
-<br />
-
-*italic*
-
-<hr>
-
-**bold**
-
-<hr>
-
-~~strike through~~
-
-<hr>
-
-> this is a block quote
-> it goes like this
->
-> if you want space, put arrow head in blank line
-> you can also the the html `<blockquote>` tags
-
-<hr>
-
-### task list
-- [x] flip
-- [ ] flap
-- [ ] flop
-
-<hr>
-
-<ul>
-    <li>unordered list</li>
-</ul>
-
-<hr>
-
-<ol>
-    <li>ordered list</li>
-</ol>
-
-<hr>
-
-| Col 1  | Col 2 |
-| ------------- | ------------- |
-| tables  | don't you  |
-| are fun  | think so?  |
-
-<hr>
-
-```print("This is code") ```
-
-<hr>
-
-```json
-{
-    "This is" : "specific code"
-}
-```
-
-<hr>
-
-emojis are fine 😍
-[emoji index](https://unicode.org/emoji/charts/full-emoji-list.html)
-
-<hr>
-
-not supported in *GitHub*:
-
-<span style="background-color: darkslategray; color: cyan"> text and highlight colors supported as inline-styles </span>
-
-supported in *GitHub* (this may not display in other previewers):
-
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
-
-<hr>
-
-basic link [My ToolBox](https://anthonybench.github.io)
-
-<hr>
-
-email <anthonybenchyep@gmail.com>
-
-<hr>
-
-basic image: \
-![Holochan!](https://i.imgur.com/oTopiyf.jpg)
-
-tagged image, more control, \
-you can stack image tags by adding the `align="left"` attribute: \
-<img alt="example image tag" src="https://i.imgur.com/jtNwEWu.png" width="200" />
-
-<br />
-
-<hr>
-
-section jump [`Table of Contents`](#table-of-contents-)
-
-(links must omit special characters and emojis, and spaces must have dashes. Underscores do not count as special characters. special means *anything* not alpha-numeric. this may not work in other previewers.)
-
-<hr>
-
-badges:
-
-* license/GitHub
-![GitHub](https://img.shields.io/github/license/anthonybench/Algorithms)
-* Analysis/HitHub top language
-![GitHub top language](https://img.shields.io/github/languages/top/anthonybench/Algorithms)
-* Analysis/GitHub language count
-![GitHub language count](https://img.shields.io/github/languages/count/anthonybench/anthonybench.github.io)
-* Make new badge: [shield.io](https://shields.io/)
-* [MIT License Link](https://opensource.org/licenses/MIT)
