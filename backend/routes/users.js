@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
+let Counter = require('../models/counter.model');
 
 router.route('/').get((req, res) => {
     User.find()
@@ -13,16 +14,23 @@ router.route('/:uid').get((req, res) => {
         .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.route('/add').post((req, res) => {
-    const userid = Math.floor((Math.random() * 100) + 1); // go through users and get the next id no.
+router.route('/add').post(async function(req, res) {
+    let nextId = Counter.find()
+        .then(counters => { return counters[0].user + 1 })
+        .catch(err => res.status(400).json("Error: " + err));
+    const userid = await nextId;
     const username = req.body.username;
-    const useristeacher = req.body.isTeacher.toLowerCase() === "yes" ? true : false;
+    const useristeacher = false;
 
     const newUser = new User({
         username : username,
         id : userid,
         isTeacher : useristeacher
     });
+
+    Counter.updateOne({}, { $inc: { user: 1 } })
+        .then(console.log("counter updated!"))
+        .catch(err => res.status(400).json("Error: " + err));
 
     newUser.save()
         .then(() => res.json('User added!'))

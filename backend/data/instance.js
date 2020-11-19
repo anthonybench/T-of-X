@@ -6,6 +6,7 @@ const username = "Isaac Yep"; // Teacher username
 
 
 const mongoose = require('mongoose');
+const Counter = require('../models/counter.model');
 let User = require('../models/user.model');
 
 require('dotenv').config(); //enviornment variables in .env
@@ -26,8 +27,14 @@ const newUser = new User({
     isTeacher : useristeacher
 });
 
+const newCounter = new Counter({
+    session: 0,
+    user: 1
+});
+
 try {
     newUser.save();
+    newCounter.save();
 } catch(err) {
     console.log("Please verify your teacher has been added to the 'users' database collection.");
 }
