@@ -28,7 +28,9 @@ This repository contains a tutoring scheduler developed in collaboration with [I
 
 Our application example is hosted [here](https://t-of-x-294901.uc.r.appspot.com/), and is instanced for me (*Isaac Yep*), however this application as a product would be tailored for any tutor as a front facing scheduler/portal through which to interact with current or potential clients. Simply clone this repository, change placeholder values and items with your own, and deploy. Make sure to run `npm install` in both front end (`/t-of-x`) and back end (`/backend`) subdirectories. The front end is a *React* application, and the back end is a *Node/Express* application. For relevant api keys, you'll need to register a [Google Cloud Project](https://cloud.google.com), as well as a [MongoDB Atlas Project](https://mongodb.com) project. To Initialize the *Users* database collection with the teacher, enter the following command from the root directory after your connection string is managed:
 ```
-$ node backend/data/instance.js
+$ cd backend
+$ node data/instance.js
+$ node data/testdatafill.js
 ```
 
 <br />
@@ -102,6 +104,6 @@ React-Axios ![npm](https://img.shields.io/npm/v/react-axios)
 <!-- / -->
 See [License](https://opensource.org/licenses/MIT) for the full license text.
 
-This repository was authored by *Michael Change* and *Isaac Yep*.
+This repository was authored by ***Isaac Yep*** as the back-end developer and documenter, and ***Michael Change*** as the front-end developer.
 
 [Back to Table of Contents](#table-of-contents-)
