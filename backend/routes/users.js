@@ -28,17 +28,24 @@ router.route('/add').post(async function(req, res) {
         isTeacher : useristeacher
     });
 
-    Counter.updateOne({}, { $inc: { user: 1 } })
+    await Counter.updateOne({}, { $inc: { user: 1 } })
         .then(console.log("counter updated!"))
         .catch(err => res.status(400).json("Error: " + err));
 
-    newUser.save()
+    await newUser.save()
         .then(() => res.json('User added!'))
         .catch(err => res.status(400).json('Error: ' + err));
+
+    res.json(
+        `[{
+            username: ${username},
+            id: ${userid}
+        }]`
+    );
 });
 
 router.route('/delete').delete(async function(req, res) {
-    User.deleteOne({ id: req.body.id })
+    await User.deleteOne({ id: req.body.id })
         .then(console.log("User deleted!"))
         .catch(err => console.log("Error: " + err));
 

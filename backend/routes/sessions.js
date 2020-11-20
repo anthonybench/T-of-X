@@ -30,17 +30,26 @@ router.route('/add').post(async function(req, res) {
         date : sessiondate
     });
 
-    Counter.updateOne({}, { $inc: { session: 1 } })
+    await Counter.updateOne({}, { $inc: { session: 1 } })
         .then(console.log("counter updated!"))
         .catch(err => res.status(400).json("Error: " + err));
 
-    newSession.save()
+    await newSession.save()
         .then(() => res.json('Session added!'))
         .catch(err => res.status(400).json('Error: ' + err));
+
+    res.json(
+        `[{
+            id: ${sessionid},
+            uid: ${sessionuserid},
+            duration: ${sessionduration},
+            date: ${sessiondate}
+        }]`
+    );
 });
 
-router.route('/delete').delete((req, res) => {
-    Session.deleteOne({ id: req.body.id })
+router.route('/delete').delete( async function (req, res) {
+    await Session.deleteOne({ id: req.body.id })
         .then(console.log("Session deleted!"))
         .catch(err => console.log("Error: " + err));
 
