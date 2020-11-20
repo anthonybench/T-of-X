@@ -1,10 +1,8 @@
 const router = require('express').Router();
 let Session = require('../models/session.model');
-let User = require('../models/user.model');
 let Counter = require('../models/counter.model');
 
 router.route('/').get((req, res) => {
-    // console.log(req.params);
     Session.find()
         .then(sessions => res.json(sessions))
         .catch(err => res.status(400).json('Error: ' + err));
@@ -16,7 +14,7 @@ router.route('/:uid').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post(async function(req, res){
+router.route('/add').post(async function(req, res) {
     let nextSession = Counter.find()
         .then(counters => { return counters[0].session + 1})
         .catch(err => res.status(400).json("Error: " + err));
@@ -39,6 +37,15 @@ router.route('/add').post(async function(req, res){
     newSession.save()
         .then(() => res.json('Session added!'))
         .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/delete').delete((req, res) => {
+    
+    Session.deleteOne({ id: req.body.id })
+        .then(console.log("Session deleted!"))
+        .catch(err => console.log("Error: " + err));
+
+    res.json(`[{id: ${req.body.id}}]`);
 });
 
 module.exports = router;

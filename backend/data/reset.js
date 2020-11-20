@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 let User = require('../models/user.model');
 let Session = require('../models/session.model');
 let Counter = require('../models/counter.model');
-let async = require('async');
 require('dotenv').config(); //enviornment variables in .env
 
 const uri = process.env.ATLAS_URI;

@@ -37,4 +37,12 @@ router.route('/add').post(async function(req, res) {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/delete').delete(async function(req, res) {
+    const userId = req.params.id;
+    
+    User.deleteOne({ id: userId })
+        .then(console.log("Student deleted!"))
+        .catch(err => console.log("Error: " + err));
+});
+
 module.exports = router;
