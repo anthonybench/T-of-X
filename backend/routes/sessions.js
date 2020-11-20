@@ -40,7 +40,6 @@ router.route('/add').post(async function(req, res) {
 });
 
 router.route('/delete').delete((req, res) => {
-    
     Session.deleteOne({ id: req.body.id })
         .then(console.log("Session deleted!"))
         .catch(err => console.log("Error: " + err));
