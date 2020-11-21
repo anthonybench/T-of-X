@@ -48,17 +48,19 @@ function sleep(ms) {
 }
 const delay = 1000;
 
+
+try {
 //================================
 //============= USERS
 //================================
 
-async.waterfall([
+    async.waterfall([
         async function() { //=============Student User 1
             username = usernames[nameInd];
             nameInd++;
             nextId = Counter.find()
-                    .then(counters => { return counters[0].user + 1 })
-                    .catch(err => console.log("Error: " + err));
+                .then(counters => { return counters[0].user + 1 })
+                .catch(err => console.log("Error: " + err));
             userid = await nextId;
             newStudent = new User({
                 username: username,
@@ -77,8 +79,8 @@ async.waterfall([
             username = usernames[nameInd];
             nameInd++;
             nextId = Counter.find()
-                    .then(counters => { return counters[0].user + 1 })
-                    .catch(err => console.log("Error: " + err));
+                .then(counters => { return counters[0].user + 1 })
+                .catch(err => console.log("Error: " + err));
             userid = await nextId;
             newStudent = new User({
                 username: username,
@@ -320,12 +322,13 @@ async.waterfall([
             console.log(result);
         }
     }
-);
+    );
 
 //================================
 //============= SESSIONS
 //================================
-async.waterfall([
+
+    async.waterfall([
         async function() { //=============Student Session 1
             sessionuserid++;
             sessiondateDay++;
@@ -619,4 +622,8 @@ async.waterfall([
             console.log(result);
         }
     }
-);
+    );
+} catch(err) {
+    console.log("Please verify that your test data has populated the database.");
+    console.log(`MongoDB Response: ${err}`);
+}

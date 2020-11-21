@@ -36,5 +36,6 @@ try {
     newUser.save();
     newCounter.save();
 } catch(err) {
-    console.log("Please verify your teacher has been added to the 'users' database collection.");
+    console.log("Please verify that your teacher has been added to the 'users' database collection.");
+    console.log(`MongoDB Response: ${err}`);
 }

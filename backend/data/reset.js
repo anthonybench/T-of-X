@@ -11,17 +11,23 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
 
-// purge sessions
-Session.deleteMany({ id: { $gte: 1 } })
-    .then(console.log("All sessions deleted!"))
-    .catch(err => console.log("Error: " + err));
 
-// purge all users but teacher
-User.deleteMany({ id: { $gte: 2 } })
-    .then(console.log("All students deleted!"))
-    .catch(err => console.log("Error: " + err));
+try {
+    // purge sessions
+    Session.deleteMany({ id: { $gte: 1 } })
+        .then(console.log("All sessions deleted!"))
+        .catch(err => console.log("Error: " + err));
 
-// reset counter
-Counter.updateOne({}, { session: 0, user: 1})
-    .then(console.log("counter updated!"))
-    .catch(err => console.log("Error: " + err));
+    // purge all users but teacher
+    User.deleteMany({ id: { $gte: 2 } })
+        .then(console.log("All students deleted!"))
+        .catch(err => console.log("Error: " + err));
+
+    // reset counter
+    Counter.updateOne({}, { session: 0, user: 1})
+        .then(console.log("counter updated!"))
+        .catch(err => console.log("Error: " + err));
+} catch (err) {
+    console.log("Please verify that the database has been reset.");
+    console.log(`MongoDB Response: ${err}`);
+}
