@@ -15,6 +15,8 @@ function MyVerticallyCenteredModal(props) {
             teacherPageSwitch()
         } else if (formDataObj.teacherOrStudent === "student") {
             studentPageSwitch()
+        } else {
+            alert("Please select loging in as teacher or student")
         }
       }
 
