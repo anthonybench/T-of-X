@@ -3,6 +3,23 @@ import {Modal, Button, Form, Row, Col, Container} from 'react-bootstrap'
 import {IoMdContact, IoMdPerson, IoMdPeople} from "react-icons/io";
 
 function MyVerticallyCenteredModal(props) {
+    const {teacherPageSwitch, studentPageSwitch} = props;
+
+
+    const onFormSubmit = e => {
+        e.preventDefault()
+        const formData = new FormData(e.target),
+              formDataObj = Object.fromEntries(formData.entries())
+        console.log(formDataObj)
+        if(formDataObj.teacherOrStudent === "teacher") {
+            teacherPageSwitch()
+        } else if (formDataObj.teacherOrStudent === "student") {
+            studentPageSwitch()
+        } else {
+            alert("Please select loging in as teacher or student")
+        }
+      }
+
     return (
       <Modal
         {...props}
@@ -16,7 +33,7 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
+        <Form onSubmit={onFormSubmit}>
             <fieldset>
                 <Form.Label as="legend">
                     Log in as
@@ -34,8 +51,10 @@ function MyVerticallyCenteredModal(props) {
                         marginLeft: 30,
                     }} 
                     inline
-                    type="checkbox"
+                    type="radio"
                     label="Teacher"
+                    value="teacher"
+                    name="teacherOrStudent"
                     id="checkTeacher"
                     />
                 </Col>
@@ -48,8 +67,10 @@ function MyVerticallyCenteredModal(props) {
                         marginLeft: 30,
                     }} 
                     inline
-                    type="checkbox"
+                    type="radio"
                     label="Student"
+                    value="student"
+                    name="teacherOrStudent"
                     id="checkStudent"
                     />
                 </Col>
@@ -77,8 +98,9 @@ function MyVerticallyCenteredModal(props) {
   }
 
 
-function LoginModal() {
+function LoginModal(props) {
     const [modalShow, setModalShow] = React.useState(false);
+    const {teacherPageSwitch, studentPageSwitch} = props;
 
     return (
       <>
@@ -99,6 +121,8 @@ function LoginModal() {
         </Button>
   
         <MyVerticallyCenteredModal
+          teacherPageSwitch={teacherPageSwitch}
+          studentPageSwitch={studentPageSwitch}
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
