@@ -19,7 +19,7 @@ router.route('/add').post(async function(req, res) {
         .then(counters => { return counters[0].session + 1})
         .catch(err => res.status(400).json("Error: " + err));
     const sessionid = await nextSession;
-    const sessionuserid = req.body.uid; // need another way to get uid
+    const sessionuserid = req.body.uid;
     const sessionduration = req.body.duration;
     const sessiondate = req.body.date;
 
