@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 
 
-class oauth_test extends Component {
+class Oauth_test extends Component {
 
     render() {
         // Check sign in status
@@ -31,4 +31,4 @@ class oauth_test extends Component {
 
 }
 
-export default oauth_test;
+export default Oauth_test;

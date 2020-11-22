@@ -4,7 +4,7 @@ import MovingBackground from './UI/Background';
 import LandingPage from './LandingPage/LandingPage';
 import TeacherPage from './TeacherPage/TeacherPage';
 import StudentPage from './StudentPage/StudentPage';
-import oauth_test from './oauth_test';
+import Oauth_test from './oauth_test';
 import {Button} from "react-bootstrap";
 import {IoMdHome} from "react-icons/io";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -143,7 +143,7 @@ class App extends React.Component{
 
         <MovingBackground/>
 
-        <oauth_test 
+        <Oauth_test 
                 googleAPIObj={gapi}
                 authenticationSetup={this.state.authenticationSetup}
                 signIn={this.signIn}
