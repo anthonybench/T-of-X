@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let Session = require('../models/session.model');
+let User = require('../models/user.model');
 let Counter = require('../models/counter.model');
 
 router.route('/').get((req, res) => {
@@ -11,6 +12,46 @@ router.route('/').get((req, res) => {
 router.route('/:uid').get((req, res) => {
     Session.find( { "uid" : req.params.uid } )
         .then(sessions => res.json(sessions))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/user/:username').get((req, res) => {
+    User.find( { username : req.params.username } )
+        .then(async function(users) {
+            if (users.length == 0) {
+                let nextId = Counter.find()
+                    .then(counters => { return counters[0].user + 1 })
+                    .catch(err => res.status(400).json("Error: " + err));
+                const userid = await nextId;
+                const username = req.params.username;
+                const useristeacher = false;
+
+                const newUser = new User({
+                    username : username,
+                    id : userid,
+                    isTeacher : useristeacher
+                });
+
+                await Counter.updateOne({}, { $inc: { user: 1 } })
+                    .then(console.log("counter updated!"))
+                    .catch(err => res.status(400).json("Error: " + err));
+
+                await newUser.save()
+                    .then(() => res.json('User added!'))
+                    .catch(err => res.status(400).json('Error: ' + err));
+
+                res.json(
+                    `[{
+                        username: ${username},
+                        id: ${userid}
+                    }]`
+                );
+            } else {
+                Session.find( { "uid" : users[0].id } )
+                    .then(sessions => res.json(sessions))
+                    .catch(err => res.status(400).json('Error: ' + err));
+            }
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

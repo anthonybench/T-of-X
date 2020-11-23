@@ -44,7 +44,7 @@ $ vercel
 
 ***Sessions***
 
-`GET` 
+`GET`
 
 **https://t-of-x-backend.anthonybench.vercel.app/sessions**
 > Returns an array of json *session* objects of the following response-format:
@@ -85,6 +85,9 @@ $ vercel
 
 **https://t-of-x-backend.anthonybench.vercel.app/sessions/:uid**
 > Returns an array of json *session* objects that match the provided *uid*, of teh same response-format shown above.
+
+**https://t-of-x-backend.anthonybench.vercel.app/sessions/user/:username**
+> Returns an array of json *session* objects that match the provided *username*, of the same response-format shown above. If given a new user (not found in database), the user is created.
 
 `POST`
 

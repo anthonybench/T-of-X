@@ -614,6 +614,69 @@ try {
                 .then(console.log("Session Added!"))
                 .catch(err => console.log("Error: " + err));
             await sleep(delay);
+        },
+        async function() { //=============Student Session 14 (multi-session user)
+            sessiondateDay++;
+            sessiondate = `${sessiondateBeg}${sessiondateDay}${sessiondateEnd}`;
+            nextSession = Counter.find()
+                .then(counters => { return counters[0].session + 1 })
+                .catch(err => console.log("Error: " + err));
+            sessionid = await nextSession;
+            newSession = new Session({
+                id : sessionid,
+                uid : 3,
+                duration : sessionduration,
+                date : sessiondate
+            });
+            Counter.updateOne({}, { $inc: { session: 1 } })
+                .then(console.log("counter updated!"))
+                .catch(err => console.log("Error: " + err));
+            newSession.save()
+                .then(console.log("Session Added!"))
+                .catch(err => console.log("Error: " + err));
+            await sleep(delay);
+        },
+        async function() { //=============Student Session 15 (multi-session user)
+            sessiondateDay++;
+            sessiondate = `${sessiondateBeg}${sessiondateDay}${sessiondateEnd}`;
+            nextSession = Counter.find()
+                .then(counters => { return counters[0].session + 1 })
+                .catch(err => console.log("Error: " + err));
+            sessionid = await nextSession;
+            newSession = new Session({
+                id : sessionid,
+                uid : 3,
+                duration : sessionduration,
+                date : sessiondate
+            });
+            Counter.updateOne({}, { $inc: { session: 1 } })
+                .then(console.log("counter updated!"))
+                .catch(err => console.log("Error: " + err));
+            newSession.save()
+                .then(console.log("Session Added!"))
+                .catch(err => console.log("Error: " + err));
+            await sleep(delay);
+        },
+        async function() { //=============Student Session 16 (multi-session user)
+            sessiondateDay++;
+            sessiondate = `${sessiondateBeg}${sessiondateDay}${sessiondateEnd}`;
+            nextSession = Counter.find()
+                .then(counters => { return counters[0].session + 1 })
+                .catch(err => console.log("Error: " + err));
+            sessionid = await nextSession;
+            newSession = new Session({
+                id : sessionid,
+                uid : 3,
+                duration : sessionduration,
+                date : sessiondate
+            });
+            Counter.updateOne({}, { $inc: { session: 1 } })
+                .then(console.log("counter updated!"))
+                .catch(err => console.log("Error: " + err));
+            newSession.save()
+                .then(console.log("Session Added!"))
+                .catch(err => console.log("Error: " + err));
+            await sleep(delay);
         }
     ],
 
