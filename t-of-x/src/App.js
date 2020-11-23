@@ -1,10 +1,10 @@
 import './App.css';
 import React from "react";
 import MovingBackground from './UI/Background';
+import OauthLoginModal from './Tools/OauthLoginModal'
 import LandingPage from './LandingPage/LandingPage';
 import TeacherPage from './TeacherPage/TeacherPage';
 import StudentPage from './StudentPage/StudentPage';
-import Oauth_test from './oauth_test';
 import {Button} from "react-bootstrap";
 import {IoMdHome} from "react-icons/io";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -143,24 +143,27 @@ class App extends React.Component{
 
         <MovingBackground/>
 
-        <Oauth_test 
-                googleAPIObj={gapi}
-                authenticationSetup={this.state.authenticationSetup}
-                signIn={this.signIn}
-                signOut={this.signOut}
-            />
-
         <Button variant="outline-dark" onClick={() => this.landingPageSwitch()}
-            style={{
-                position: "absolute",
-                top: 20,
-                left: 30,
-            }}
+          style={{
+              position: "absolute",
+              top: 20,
+              left: 30,
+          }}
         >
         <IoMdHome
-            size="30"
+          size="30"
         />
         </Button>
+
+        <OauthLoginModal
+          landingPageSwitch={this.landingPageSwitch}
+          teacherPageSwitch={this.teacherPageSwitch}
+          studentPageSwitch={this.studentPageSwitch}
+          googleAPIObj={gapi}
+          authenticationSetup={this.state.authenticationSetup}
+          signIn={this.signIn}
+          signOut={this.signOut}
+        />
 
         {/* Landing Page Section */}
         {this.state.landing &&

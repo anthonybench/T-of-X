@@ -20,8 +20,14 @@ class Oauth_test extends Component {
         }
 
         return (
-            <div>
-                hello
+            <div 
+                style={{
+                    position: "absolute",
+                    top: 500,
+                    left: 500,
+                }}
+            >
+
                 {message}
                 {isSignedIn ? signOutButton : signInButton}
             </div>

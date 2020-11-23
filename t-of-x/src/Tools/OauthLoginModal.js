@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Modal, Button, Form, Row, Col, Container} from 'react-bootstrap'
+import React from "react";
+import {Modal, Button, Form, Row, Col, Container} from 'react-bootstrap';
 import {IoMdContact, IoMdPerson, IoMdPeople} from "react-icons/io";
 
 function MyVerticallyCenteredModal(props) {
@@ -13,8 +13,10 @@ function MyVerticallyCenteredModal(props) {
         console.log(formDataObj)
         if(formDataObj.teacherOrStudent === "teacher") {
             teacherPageSwitch()
+            props.onHide()
         } else if (formDataObj.teacherOrStudent === "student") {
             studentPageSwitch()
+            props.onHide()
         } else {
             alert("Please select loging in as teacher or student")
         }
@@ -78,6 +80,7 @@ function MyVerticallyCenteredModal(props) {
             </fieldset>
             <Form.Row>
                     <Button type="submit" variant="danger" block
+                        onClick={props.signIn}
                         style={{ 
                             marginTop: 50,
                         }} 
@@ -98,12 +101,15 @@ function MyVerticallyCenteredModal(props) {
   }
 
 
-function LoginModal(props) {
+function OauthLoginModal(props) {
     const [modalShow, setModalShow] = React.useState(false);
-    const {teacherPageSwitch, studentPageSwitch} = props;
+    const {landingPageSwitch, teacherPageSwitch, studentPageSwitch, signIn} = props;
 
-    return (
-      <>
+    // Check sign in status
+    let isSignedIn = props.authenticationSetup === true && props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
+
+    // Sign In / Sign Out button
+    let signInButton = 
         <Button variant="danger" onClick={() => setModalShow(true)}
             style={{
                 position: "absolute",
@@ -118,13 +124,41 @@ function LoginModal(props) {
                 marginLeft: "10",
             }} 
         />
-        </Button>
+        </Button>;
+    function signOutButtonFunction() {
+        props.signOut();
+        landingPageSwitch();
+    }
+    let signOutButton = 
+        <Button variant="danger" className="topBarButton" onClick={signOutButtonFunction}
+            style={{
+                position: "absolute",
+                top: 20,
+                right: 30,
+            }}
+        >
+            Sign Out
+        </Button>;
+
+    // Set sign-in/sign-out status message
+    let message = <div className="signInStatus">Not Signed In</div>;
+    if (props.authenticationSetup === true && props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true) {
+        // https://developers.google.com/identity/sign-in/web/people
+        message = <div className="signInStatus">Welcome, {props.googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName()}</div>;
+    }
+
+    return (
+      <>
+        <div>
+            {isSignedIn ? signOutButton : signInButton}
+        </div>
   
         <MyVerticallyCenteredModal
           teacherPageSwitch={teacherPageSwitch}
           studentPageSwitch={studentPageSwitch}
           show={modalShow}
           onHide={() => setModalShow(false)}
+          signIn={signIn}
         />
       </>
     );
@@ -132,4 +166,4 @@ function LoginModal(props) {
   
 
 
-export default LoginModal;
+export default OauthLoginModal;
