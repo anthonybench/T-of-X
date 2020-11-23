@@ -1,5 +1,5 @@
 //===============================================================//
-/* PLACE TEACHER NAME FOR 'USER' DATABASE COLLECTION HERE */
+/* CONFIGURATION DATA GOES HERE */
 //===============================================================//
 const username = "Isaac Yep"; // Teacher username
 //===============================================================//
