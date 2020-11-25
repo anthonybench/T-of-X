@@ -1,7 +1,6 @@
 import React from "react";
-import { Row, Col, Typography } from 'antd';
+import { Row, Col, Typography, Button } from 'antd';
 import { FaLinkedin, FaGithub, FaStackOverflow, FaYoutube } from "react-icons/fa";
-import { Button } from "react-bootstrap";
 import LandingCarousel from "./LandingCarousel";
 
 
@@ -37,7 +36,17 @@ function LandinPage(props) {
                     Titles that let people know this the teacher they want!
                 </Col>
             </Row>
-            <Row  align="top">
+            <Row
+                style={{ marginTop: 20 }}
+            >
+                <Col offset={3}
+                >
+                    <Button type="primary" shape="round" size={'large'}>Sign up</Button>
+                </Col>
+            </Row>
+            <Row  align="top"
+                style={{ marginTop: 30 }}
+            >
                 <Col offset = {3}>
                     <a href="https://www.linkedin.com/in/anthonybench/"  target="_blank" rel="noreferrer">
                         <FaLinkedin

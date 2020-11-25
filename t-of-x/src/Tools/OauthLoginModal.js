@@ -87,9 +87,6 @@ function MyVerticallyCenteredModal(props) {
                     >
                         Sign in with Google
                     </Button>
-                    <Button variant="outline-info" block>
-                        Sign up
-                    </Button>
             </Form.Row>
         </Form>
         </Modal.Body>
