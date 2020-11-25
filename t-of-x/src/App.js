@@ -8,6 +8,7 @@ import StudentPage from './StudentPage/StudentPage';
 import {Button} from "react-bootstrap";
 import {IoMdHome} from "react-icons/io";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
@@ -141,7 +142,11 @@ class App extends React.Component{
     return (
       <div className="App">
 
-        <MovingBackground/>
+        <MovingBackground
+          style={{
+            height: "100vh"
+          }}
+        />
 
         <Button variant="outline-dark" onClick={() => this.landingPageSwitch()}
           style={{
