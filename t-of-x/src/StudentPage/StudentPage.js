@@ -1,6 +1,9 @@
 import React from "react";
 import CalendarBoard from '../Tools/CalendarBoard';
-import { Row, Col } from 'antd';
+import StudentSessionBoard from '../Tools/StudentSessionBoard';
+import SubmitSession from '../Tools/SubmitSession';
+import { Row, Col, DatePicker } from 'antd';
+
 
 function StudentPage(props) {
     const {googleAPIObj, authenticationSetup} = props;
@@ -31,14 +34,23 @@ function StudentPage(props) {
             </Row>
             <Row>
                 <Col xs={{ span: 22, offset: 1 }} md={{ span: 14, offset: 1 }}
+                    style={{ marginBottom: 30 }}
                 >
                     <CalendarBoard
                         googleAPIObj={googleAPIObj}
                         authenticationSetup={authenticationSetup}
                     />
                 </Col>
+                <Col xs={{ span: 22, offset: 1 }} md={{ span: 7, offset: 1 }}
+                    style={{ marginBottom: 30 }}
+                >
+
+                    <StudentSessionBoard/>
+                </Col>
+            </Row>
+            <Row>
                 <Col offset={1}>
-                    Session board
+                    <SubmitSession/>
                 </Col>
             </Row>
         </div>
