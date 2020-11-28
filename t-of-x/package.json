@@ -12,6 +12,7 @@
     "gapi-script": "^1.0.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
+    "react-calendar": "^3.2.1",
     "react-dom": "^17.0.1",
     "react-icons": "^3.11.0",
     "react-scripts": "4.0.0",

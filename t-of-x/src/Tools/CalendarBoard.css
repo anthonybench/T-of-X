@@ -1,0 +1,63 @@
+.calendar-board {
+    padding: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    border-radius: 6px;
+    background: radial-gradient(circle, rgba(255,255,255,0.19) 0%, rgba(179,179,179,0.19) 100%);
+    box-shadow: 6px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+
+
+.calendar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 400px;
+  }
+
+
+  .calendar-event-container {
+    width: 100%;
+    overflow-y: auto; /* https://stackoverflow.com/questions/21227287/make-div-scrollable */
+  }
+  
+  .calendar-event-container div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .calendar-event-container .date {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+  }
+  
+  .calendar-event-container {
+      height: 20vh;
+  }
+  
+  
+  
+  .calendar-event {
+    margin-top: 20px;
+  }
+  
+  .calendar-event-title {
+    font-weight: bold; /* https://www.w3schools.com/cssref/pr_font_weight.asp maybe*/
+    font-size: medium; /* Good reference I probalby didn't use because I learned about it earlier: https://www.w3schools.com/cssref/pr_font_font-size.asp */
+  }
+  
+  .calendar-event-button {
+    margin-right: 10px;
+  }
+  
+  .placeholder {
+    text-align: center;
+    font-size: medium;
+  }
+  
+  .react-calendar {
+    width: 100%;
+  }
