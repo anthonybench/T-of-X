@@ -1,5 +1,6 @@
 import React from "react";
 import CalendarBoard from '../Tools/CalendarBoard';
+import TeacherSessionBoard from '../Tools/TeacherSessionBoard';
 import { Row, Col } from 'antd';
 
 
@@ -32,14 +33,16 @@ function TeacherPage(props) {
             </Row>
             <Row>
                 <Col xs={{ span: 22, offset: 1 }} md={{ span: 14, offset: 1 }}
+                    style={{ marginBottom: 30 }}
                 >
                     <CalendarBoard
                         googleAPIObj={googleAPIObj}
                         authenticationSetup={authenticationSetup}
                     />
                 </Col>
-                <Col offset={1}>
-                    Session board
+                <Col xs={{ span: 22, offset: 1 }} md={{ span: 7, offset: 1 }}
+                >
+                    <TeacherSessionBoard/>
                 </Col>
             </Row>
         </div>
