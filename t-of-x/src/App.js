@@ -9,6 +9,7 @@ import {Button} from "react-bootstrap";
 import {IoMdHome} from "react-icons/io";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'react-calendar/dist/Calendar.css';
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
@@ -176,12 +177,18 @@ class App extends React.Component{
         
         {/* Teacher Page Section */}
         {this.state.teacher &&
-            <TeacherPage/>
+            <TeacherPage
+              googleAPIObj={gapi}
+              authenticationSetup={this.state.authenticationSetup}
+            />
             }
         
         {/* Student Page Section */}
         {this.state.student &&
-            <StudentPage/>
+            <StudentPage
+              googleAPIObj={gapi}
+              authenticationSetup={this.state.authenticationSetup}
+            />
             }
         
 
