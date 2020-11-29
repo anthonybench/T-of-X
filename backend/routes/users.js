@@ -9,6 +9,13 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/:username').get((req, res) => {
+    User.find( { "username" : req.params.username } )
+        .then(res.header("Access-Control-Allow-Origin", "*"))
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.route('/:uid').get((req, res) => {
     User.find( { "id" : req.params.uid } )
         .then(res.header("Access-Control-Allow-Origin", "*"))
