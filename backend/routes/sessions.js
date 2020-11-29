@@ -59,7 +59,6 @@ router.route('/user/:username').get((req, res) => {
 
 router.route('/add').post(async function(req, res) {
     let nextSession = Counter.find()
-        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(counters => { return counters[0].session + 1})
         .catch(err => res.status(400).json("Error: " + err));
     const sessionid = await nextSession;
@@ -75,14 +74,8 @@ router.route('/add').post(async function(req, res) {
     });
 
     await Counter.updateOne({}, { $inc: { session: 1 } })
-        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(console.log("counter updated!"))
         .catch(err => res.status(400).json("Error: " + err));
-
-    await newSession.save()
-        .then(res.header("Access-Control-Allow-Origin", "*"))
-        .then(() => res.json('Session added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
 
     let respkg = {
         id : sessionid,
@@ -91,7 +84,10 @@ router.route('/add').post(async function(req, res) {
         date : sessiondate
     }
 
-    res.json(respkg);
+    await newSession.save()
+        .then(res.header("Access-Control-Allow-Origin", "*"))
+        .then(() => res.json(respkg))
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/delete').delete( async function (req, res) {

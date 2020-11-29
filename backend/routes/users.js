@@ -42,16 +42,14 @@ router.route('/add').post(async function(req, res) {
         .then(console.log("counter updated!"))
         .catch(err => res.status(400).json("Error: " + err));
 
-    await newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-
     let respkg = {
         username : username,
         id : userid
     }
 
-    res.json(respkg);
+    await newUser.save()
+        .then(() => res.json(respkg))
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/delete').delete(async function(req, res) {
