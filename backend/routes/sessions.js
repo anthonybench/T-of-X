@@ -5,18 +5,21 @@ let Counter = require('../models/counter.model');
 
 router.route('/').get((req, res) => {
     Session.find()
+        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(sessions => res.json(sessions))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:uid').get((req, res) => {
     Session.find( { "uid" : req.params.uid } )
+        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(sessions => res.json(sessions))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/user/:username').get((req, res) => {
     User.find( { username : req.params.username } )
+        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(async function(users) {
             if (users.length == 0) {
                 let nextId = Counter.find()
@@ -57,6 +60,7 @@ router.route('/user/:username').get((req, res) => {
 
 router.route('/add').post(async function(req, res) {
     let nextSession = Counter.find()
+        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(counters => { return counters[0].session + 1})
         .catch(err => res.status(400).json("Error: " + err));
     const sessionid = await nextSession;
@@ -72,29 +76,36 @@ router.route('/add').post(async function(req, res) {
     });
 
     await Counter.updateOne({}, { $inc: { session: 1 } })
+        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(console.log("counter updated!"))
         .catch(err => res.status(400).json("Error: " + err));
 
     await newSession.save()
+        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(() => res.json('Session added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 
-    res.json(
-        `[{
-            id: ${sessionid},
-            uid: ${sessionuserid},
-            duration: ${sessionduration},
-            date: ${sessiondate}
-        }]`
-    );
+    let respkg = {
+        id : sessionid,
+        uid: sessionuserid,
+        duration: sessionduration,
+        date : sessiondate
+    }
+
+    res.json(respkg);
 });
 
 router.route('/delete').delete( async function (req, res) {
     await Session.deleteOne({ id: req.body.id })
+        .then(res.header("Access-Control-Allow-Origin", "*"))
         .then(console.log("Session deleted!"))
         .catch(err => console.log("Error: " + err));
 
-    res.json(`[{id: ${req.body.id}}]`);
+    let respkg = {
+        id : req.body.id
+    }
+
+    res.json(respkg);
 });
 
 module.exports = router;

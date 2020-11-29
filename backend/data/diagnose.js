@@ -4,7 +4,7 @@
 const baseURI = "https://t-of-x-backend.anthonybench.vercel.app/"; // Host domain, must end with `/`
 const sessionsByUID = 4; // Test sessions registered with particular uid
 const userByID = 1; // Test user with particular id
-const sessionsByUSERNAME = "Mikasa"; // Test sessions of particular username
+const sessionsByUSERNAME = 'Mikasa'; // Test sessions of particular username
 //===============================================================//
 
 const https = require('https');

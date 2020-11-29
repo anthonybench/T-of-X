@@ -25,7 +25,6 @@ Routes are also important, and provide deployment flexibility. Here is one field
         ...
     ]
 }
-
 ```
 Documentation on this configuration file can be found [here](https://vercel.com/docs/configuration). \
 To deploy, make sure you have the [vercel cli tool](https://vercel.com/download) installed, and from the project root (`/backend/`) enter:
