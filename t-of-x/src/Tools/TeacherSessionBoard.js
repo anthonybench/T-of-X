@@ -51,7 +51,7 @@ function TeacherSessionBoard(props) {
             console.log(data)
 
             data.forEach(element => {
-                let userUrl = "https://t-of-x-backend.anthonybench.vercel.app/users/" + String(element.uid) 
+                let userUrl = "https://t-of-x-backend.anthonybench.vercel.app/users/id/" + String(element.uid) 
                 axios.get(userUrl)
                 .then(function (response) {
                     // handle success
