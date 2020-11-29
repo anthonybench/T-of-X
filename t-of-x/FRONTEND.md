@@ -8,7 +8,6 @@
 From the project root (`/t-of-x/`) enter:
 ```
 $ npm run build
-
 ```
 and make sure you have your configuration file `/app.yaml` configured with a minimum of the following specifications:
 ```yaml
