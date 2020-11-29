@@ -10,7 +10,7 @@
         { "src": "/sessions/delete", "methods": ["DELETE"], "dest": "server.js"},
         { "src": "/users", "dest": "server.js"},
         { "src": "/users/(?<username>[^/]+)", "dest": "server.js"},
-        { "src": "/users/(?<uid>[^/]+)", "dest": "server.js"},
+        { "src": "/users/id/(?<uid>[^/]+)", "dest": "server.js"},
         { "src": "/users/add", "methods": ["POST"], "dest": "server.js"},
         { "src": "/users/delete", "methods": ["DELETE"], "dest": "server.js"},
         { "src": "/counters", "dest": "server.js"}

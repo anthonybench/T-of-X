@@ -88,9 +88,6 @@ $ vercel
 **https://t-of-x-backend.anthonybench.vercel.app/sessions/user/:username**
 > Returns an array of json *session* objects that match the provided *username*, of the same response-format shown above. If given a new user (not found in database), the user is created.
 
-**url**
-> Returns an array of the single json *user* object that matches that username, or an empty array if none found.
-
 `POST`
 
 **https://t-of-x-backend.anthonybench.vercel.app/sessions/add**
@@ -154,8 +151,11 @@ $ vercel
 >]
 > ```
 
-**https://t-of-x-backend.anthonybench.vercel.app/users/:uid**
+**https://t-of-x-backend.anthonybench.vercel.app/users/id/:uid**
 > Returns an array of json *session* objects that match the provided *uid*, of teh same response-format shown above.
+
+**https://t-of-x-backend.anthonybench.vercel.app/users/:username**
+> Returns an array of the single json *user* object that matches that username, or an empty array if none found.
 
 `POST`
 
