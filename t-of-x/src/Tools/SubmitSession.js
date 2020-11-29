@@ -25,10 +25,9 @@ function SubmitSession() {
           ...fieldsValue,
           'date-time-picker': fieldsValue['date-time-picker'].format('YYYY-MM-DD HH:mm:ss'),
           'duration': fieldsValue['duration'],
-
-
         };
         console.log('Received values of form: ', values);
+
     };
 
 

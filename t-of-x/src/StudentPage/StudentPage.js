@@ -45,12 +45,18 @@ function StudentPage(props) {
                     style={{ marginBottom: 30 }}
                 >
 
-                    <StudentSessionBoard/>
+                    <StudentSessionBoard
+                        googleAPIObj={googleAPIObj}
+                        authenticationSetup={authenticationSetup}
+                    />
                 </Col>
             </Row>
             <Row>
                 <Col offset={1}>
-                    <SubmitSession/>
+                    <SubmitSession
+                        googleAPIObj={googleAPIObj}
+                        authenticationSetup={authenticationSetup}
+                    />
                 </Col>
             </Row>
         </div>

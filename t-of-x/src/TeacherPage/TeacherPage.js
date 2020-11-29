@@ -16,6 +16,7 @@ function TeacherPage(props) {
     }
 
 
+
     return(
         <div>
             <Row
@@ -42,7 +43,10 @@ function TeacherPage(props) {
                 </Col>
                 <Col xs={{ span: 22, offset: 1 }} md={{ span: 7, offset: 1 }}
                 >
-                    <TeacherSessionBoard/>
+                    <TeacherSessionBoard
+                        googleAPIObj={googleAPIObj}
+                        authenticationSetup={authenticationSetup}
+                    />
                 </Col>
             </Row>
         </div>
