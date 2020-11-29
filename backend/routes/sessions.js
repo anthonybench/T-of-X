@@ -77,16 +77,16 @@ router.route('/add').post(async function(req, res) {
         .then(console.log("counter updated!"))
         .catch(err => res.status(400).json("Error: " + err));
 
-    /* Save for later, I am inentionally leaving this here. */
-    // let respkg = {
-    //     id : sessionid,
-    //     uid: sessionuserid,
-    //     duration: sessionduration,
-    //     date : sessiondate
-    // }
+    let respkg = {
+        id : sessionid,
+        uid: sessionuserid,
+        duration: sessionduration,
+        date : sessiondate
+    }
 
     await newSession.save()
-        .then(() => res.send("Session added!"))
+        .then(res.header("Access-Control-Allow-Origin", "*"))
+        .then(() => res.json(respkg))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
