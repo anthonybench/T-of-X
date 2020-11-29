@@ -43,12 +43,11 @@ router.route('/user/:username').get((req, res) => {
                     .then(() => res.json('User added!'))
                     .catch(err => res.status(400).json('Error: ' + err));
 
-                res.json(
-                    `[{
-                        username: ${username},
-                        id: ${userid}
-                    }]`
-                );
+                let respkg = {
+                    username: username,
+                    id: userid
+                }
+                res.json(respkg);
             } else {
                 Session.find( { "uid" : users[0].id } )
                     .then(sessions => res.json(sessions))
