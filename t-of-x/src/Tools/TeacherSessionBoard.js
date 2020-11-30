@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Collapse } from 'antd';
+import { Collapse, Button } from 'antd';
 import './SessionBoard.css'
 const axios = require('axios');
 
@@ -97,10 +97,19 @@ function TeacherSessionBoard(props) {
 
     return(
         <div className="session-board">
+            <Button type="primary" onClick={ () => creatSessionsCards(sessionCards)}
+                style={{
+                    width: "100%",
+                    marginBottom: "1em"
+                }}
+            >
+                Reload
+            </Button>
+        <div className="session-card-container">
             <Collapse defaultActiveKey={[]} onChange={callback}>
                     {isSignedIn ? sessions : <div>not signed in</div>}
             </Collapse>
-
+        </div>
         </div>
     );
 }

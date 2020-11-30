@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Collapse } from 'antd';
+import { Collapse, Button } from 'antd';
 import './SessionBoard.css'
 const axios = require('axios');
 
@@ -22,7 +22,7 @@ function StudentSessionBoard(props) {
 
     // Sign in status
     let isSignedIn = props.authenticationSetup === true && props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
-    let userName = props.googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail() 
+    let userName = props.googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName() 
 
 
     function addSessions(newSession) {
@@ -99,15 +99,25 @@ function StudentSessionBoard(props) {
     useEffect(()=>{
         // do stuff here...
         creatSessionsCards(sessionCards)
-    }, []) //https://stackoverflow.com/questions/58101018/react-calling-a-method-on-load-only-once
+    }, [sessionCards.length]) //https://stackoverflow.com/questions/58101018/react-calling-a-method-on-load-only-once
 
 
 
     return(
         <div className="session-board">
+            <Button type="primary" onClick={ () => creatSessionsCards(sessionCards)}
+                style={{
+                    width: "100%",
+                    marginBottom: "1em"
+                }}
+            >
+                Reload
+            </Button>
+        <div className="session-card-container">
             <Collapse defaultActiveKey={[]} onChange={callback}>
                     {isSignedIn ? sessions : <div>not signed in</div>}
             </Collapse>
+        </div>
         </div>
     );
 }
