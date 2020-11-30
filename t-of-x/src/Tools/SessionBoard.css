@@ -6,5 +6,9 @@
     box-shadow: 6px 4px rgba(0, 0, 0, 0.15);
     width: 100%;
     height: 36em;
-    overflow-y: auto; /* https://stackoverflow.com/questions/21227287/make-div-scrollable */
   }
+
+.session-card-container{
+    overflow-y: auto; /* https://stackoverflow.com/questions/21227287/make-div-scrollable */
+    height: 31em;
+}

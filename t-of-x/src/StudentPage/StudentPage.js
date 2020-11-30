@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import CalendarBoard from '../Tools/CalendarBoard';
 import StudentSessionBoard from '../Tools/StudentSessionBoard';
 import SubmitSession from '../Tools/SubmitSession';
@@ -12,7 +12,7 @@ function StudentPage(props) {
     let message = <div className="signInStatus">Not Signed In</div>;
     if (authenticationSetup === true && googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true) {
         // https://developers.google.com/identity/sign-in/web/people
-        message = <div className="signInStatus">Student: {googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName()}</div>;
+        message = <div className="signInStatus">{googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName()}</div>;
     }
 
 
@@ -24,6 +24,14 @@ function StudentPage(props) {
                 align="middle"
             >
                 <Col offset={2}
+                    style={{ 
+                        fontSize: 50,
+                        fontWeight: 500,
+                    }}
+                >
+                    Student:
+                </Col>
+                <Col xs={{ offset: 2 }} md={{ offset: 1 }}
                     style={{ 
                         fontSize: 50,
                         fontWeight: 500,
@@ -52,7 +60,8 @@ function StudentPage(props) {
                 </Col>
             </Row>
             <Row>
-                <Col offset={1}>
+                <Col offset={1}
+                >
                     <SubmitSession
                         googleAPIObj={googleAPIObj}
                         authenticationSetup={authenticationSetup}

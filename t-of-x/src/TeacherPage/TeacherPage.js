@@ -12,7 +12,7 @@ function TeacherPage(props) {
     let message = <div className="signInStatus">Not Signed In</div>;
     if (authenticationSetup === true && googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true) {
         // https://developers.google.com/identity/sign-in/web/people
-        message = <div className="signInStatus">Teacher: {googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName()}</div>;
+        message = <div className="signInStatus">{googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName()}</div>;
     }
 
 
@@ -24,6 +24,14 @@ function TeacherPage(props) {
                 align="middle"
             >
                 <Col offset={2}
+                    style={{ 
+                        fontSize: 50,
+                        fontWeight: 500,
+                    }}
+                >
+                    Teacher:
+                </Col>
+                <Col xs={{ offset: 2 }} md={{ offset: 1 }}
                     style={{ 
                         fontSize: 50,
                         fontWeight: 500,

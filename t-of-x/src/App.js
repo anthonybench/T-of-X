@@ -188,6 +188,9 @@ class App extends React.Component{
             <StudentPage
               googleAPIObj={gapi}
               authenticationSetup={this.state.authenticationSetup}
+              landingPageSwitch={this.landingPageSwitch}
+              studentPageSwitch={this.studentPageSwitch}
+              studentPageState={this.state.student}
             />
             }
         

@@ -1,11 +1,17 @@
-import { Form, DatePicker, Button, InputNumber } from 'antd';
+import { Form, DatePicker, Button, InputNumber, Col } from 'antd';
 import './SubmitSession.css'
 
+const axios = require('axios');
 
 
 
-function SubmitSession() {
+
+function SubmitSession(props) {
     const [form] = Form.useForm();
+
+    // Sign in status
+    let isSignedIn = props.authenticationSetup === true && props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
+
 
     const configDate = {
         rules: [{ type: 'object', required: true, message: 'Please select time!' }],
@@ -23,11 +29,41 @@ function SubmitSession() {
         // Should format date value before submit.
         const values = {
           ...fieldsValue,
-          'date-time-picker': fieldsValue['date-time-picker'].format('YYYY-MM-DD HH:mm:ss'),
+          'date-time-picker': fieldsValue['date-time-picker'].format(),
           'duration': fieldsValue['duration'],
         };
         console.log('Received values of form: ', values);
 
+        if(isSignedIn){
+
+            let userName = props.googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName() 
+            let url = 'https://t-of-x-backend.anthonybench.vercel.app/users/' + userName
+
+            axios.get(url)
+                .then(function (response) {
+                    // handle success
+                    let data = response.data;
+                    let submitUid = data[0].id;
+                    console.log(data);
+                    console.log(submitUid);
+                    console.log(values['date-time-picker'])
+                    axios.post('https://t-of-x-backend.anthonybench.vercel.app/sessions/add', {
+                        "uid" : submitUid,
+                        "duration" : values['duration'],
+                        "date" : values['date-time-picker'],
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                    });
+
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
     };
 
 
@@ -38,7 +74,6 @@ function SubmitSession() {
                 <Form.Item>
 
                     <Form.Item name="date-time-picker" label="Date-time" {...configDate}
-                        style={{display: "inline-block"}}
                     >
                         <DatePicker showTime format="YYYY/MM/DD HH:mm" 
                         />
@@ -54,7 +89,7 @@ function SubmitSession() {
                         style={{display: "inline-block"}}
                     >
                         <Button type="primary" htmlType="submit">
-                        Submit
+                            Submit
                         </Button>
                     </Form.Item>
 
