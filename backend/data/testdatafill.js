@@ -36,7 +36,7 @@ let newStudent;
 // session params
 let sessionid;
 let sessionuserid = 1;
-let sessionduration = 30;
+let sessionduration = 3;
 let sessiondateBeg = "2020-12-";
 let sessiondateEnd = "T15:42:37.162Z";
 let sessiondateDay = 10;

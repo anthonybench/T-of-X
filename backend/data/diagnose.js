@@ -140,7 +140,7 @@ try {
     request.on('error', error => console.error(`Problem with request: ${error.message}`));
     //////////////////////////////////////////////////////////
     sleep(delay);
-    url = baseURI + `users/${userByID}`; // endpoint
+    url = baseURI + `users/id/${userByID}`; // endpoint
     request = https.get(url, response => {
         if (response.statusCode == 200) {
         

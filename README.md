@@ -50,17 +50,17 @@ $ node data/reset
 
 There are 3 views in this application, the *landing page*, *teacher dashboard*, and *student dashboard*. In the landing page, you decided to create an account as a new student, or login with your credentials as the teacher or student:
 
-<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/4POxj2g.png" width="200" />
+<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/lBYQxg6.png" width="400" />
 
 After authenticaing with Google Authentication, the user is routed to their appropriate view.
 
 For the Teacher:
 
-<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/4POxj2g.png" width="200" />
+<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/KcD1a6c.png" width="400" />
 
 For the Student:
 
-<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/4POxj2g.png" width="200" />
+<img alt="PLACE HOLDER IMAGE" src="https://i.imgur.com/zzF7cJE.png" width="400" />
 
 From here, meeting time propositions can be sent and recieved, and a calendar view organizes your availability to make business quick, without needing to open other web-apps. This app aims to be realistic, and doesn't attempt to enforce strict times, but instead delivers contact information and availability, and allows meeting times to be confirmed and managed easily so as to not get in the way of changing times on the fly when needed.
 
