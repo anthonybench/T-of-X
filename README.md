@@ -90,7 +90,7 @@ We are not reviewing pull requests for merging at this time, but would greatly a
 ### Acknowledgements 💙
 <hr>
 
-A huge thanks to our instructor **Caterina Paun**, and TA **Casper Rutz** for delivering this course and empowering us to develop ***T(X)***, we learned so much from this project, are proud of what we made here, and genuinely intend to keep maintaining and imporoving this application to use personally. This application was made as a course project for the **Full Stack Web Development** course at *Portland State University*.
+A huge thanks to [this MERN stack tutorial](https://www.youtube.com/watch?v=7CqJlxBYj-M&t=5s) for getting one's bearings in MERN stack best practices and commonly useful utilities. For anyone looking into developing entrepreneurial web applications quickly, I highly recommend it as a great place to start. As well, [this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website) would be usefule to those deploying for the first time, although I went with *Google Cloud* and *Vercel*.
 
 <br />
 
